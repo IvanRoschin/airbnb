@@ -1,3 +1,4 @@
+
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import getListings from "./actions/getListings";
@@ -5,8 +6,10 @@ import ListingCard from "./components/listings/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";
 
 const Home = async () => {
+
   const listings = await getListings();
   const currentUser = await getCurrentUser();
+
 
   if (listings.length === 0) {
     return <EmptyState showReset />;
@@ -27,15 +30,15 @@ const Home = async () => {
             gap-8
         "
       >
-          {listings.map((listing) => {
-            return (
-              <ListingCard
-                currentUser={currentUser}
-                key={listing.id}
-                data={listing}
-              />
-            );
-          })}
+        {listings.map((listing) => {
+          return (
+            <ListingCard
+              currentUser={currentUser}
+              key={listing.id}
+              data={listing}
+            />
+          );
+        })}
       </div>
     </Container>
   );
