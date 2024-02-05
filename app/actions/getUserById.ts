@@ -16,6 +16,6 @@ export default async function getUserById(params: IParams) {
     }
     return user;
   } catch (error: any) {
-    throw new Error(error.message || "Error get Listing");
+    throw new Error(error.message || "Error get user");
   }
 }

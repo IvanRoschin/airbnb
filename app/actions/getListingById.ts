@@ -33,6 +33,6 @@ export default async function getListingById(params: IParams) {
     //   },
     // };
   } catch (error: any) {
-    throw new Error(error);
+    throw new Error(error.message || "Error get listing");
   }
 }

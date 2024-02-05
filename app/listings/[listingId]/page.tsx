@@ -18,7 +18,13 @@ const ListingPage = async ({ params }: { params: IParams }) => {
     return <EmptyState />;
   }
 
-  return <ListingClient reservations={reservations} listing={listing} currentUser={currentUser} />;
+  return (
+    <ListingClient
+      reservations={reservations}
+      listing={listing}
+      currentUser={currentUser}
+    />
+  );
 };
 
 export default ListingPage;
