@@ -1,15 +1,16 @@
-
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
-import getListings from "./actions/getListings";
+import getListings, { IListingParams } from "./actions/getListings";
 import ListingCard from "./components/listings/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";
 
-const Home = async () => {
+interface HomeProps {
+  searchParams: IListingParams;
+}
 
-  const listings = await getListings();
+const Home: React.FC<HomeProps> = async ({ searchParams }: HomeProps) => {
+  const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
-
 
   if (listings.length === 0) {
     return <EmptyState showReset />;
