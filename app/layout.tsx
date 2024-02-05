@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import { Suspense } from "react";
 
 import getCurrentUser from "./actions/getCurrentUser";
 
@@ -28,13 +29,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <ToasterProvider />
-        <SearchModal />
-        <RentModal />
-        <LoginModal />
-        <RegisterModal />
-        <Navbar currentUser={currentUser} />
-        <div className="pb-20 pt-28">{children}</div>
+        <Suspense fallback={<>Loading...</>}>
+          <ToasterProvider />
+          <SearchModal />
+          <RentModal />
+          <LoginModal />
+          <RegisterModal />
+          <Navbar currentUser={currentUser} />
+          <div className="pb-20 pt-28">{children}</div>
+        </Suspense>
       </body>
     </html>
   );
