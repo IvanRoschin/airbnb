@@ -12,7 +12,6 @@ import ListingInfo from "../../components/listings/ListingInfo";
 import ListingReservation from "../../components/listings/ListingReservation";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
-// import { SafeUser, SafeListing, SafeReservation } from "@/app/types";
 import { Range } from "react-date-range";
 import { categories } from "@/app/components/navbar/Categories";
 import { User, Listing, Reservation } from "@prisma/client";

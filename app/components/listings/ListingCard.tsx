@@ -8,7 +8,6 @@ import { format } from "date-fns";
 import Image from "next/image";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
-// import { SafeListing, SafeUser } from "@/app/types";
 import { Listing, User } from "@prisma/client";
 
 interface ListingCardProps {

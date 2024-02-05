@@ -24,49 +24,8 @@ export default async function getCurrentUser() {
     if (!currentUser) {
       return null;
     }
-    return currentUser
-
-    // return {
-    //   ...currentUser,
-    //   createdAt: currentUser.createdAt.toISOString(),
-    //   updatedAt: currentUser.updatedAt.toISOString(),
-    //   emailVerified: currentUser.emailVerified?.toISOString() || null,
-    // };
+    return currentUser;
   } catch (error: any) {
     return null;
   }
 }
-
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "../config/authOptions";
-// // import prisma from "../libs/prismadb";
-// import { connectToDB } from "../libs/mongodb";
-// import User from "../models/user";
-
-// export async function getSession() {
-//   await connectToDB();
-
-//   await getServerSession(authOptions);
-// }
-
-// export async function getCurrentUser() {
-//   await connectToDB();
-
-//   try {
-//     const session = await getServerSession();
-
-//     if (!session?.user?.email) {
-//       return null;
-//     }
-//     const currentUser = await User.findOne({
-//       email: session.user.email as string,
-//     });
-//     if (!currentUser) {
-//       return null;
-//     }
-//     // return currentUser;
-//     return JSON.parse(JSON.stringify(currentUser));
-//   } catch (error: any) {
-//     return null;
-//   }
-// }

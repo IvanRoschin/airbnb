@@ -1,9 +1,6 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { AuthOptions } from "next-auth";
 import bcrypt from "bcrypt";
-import User from "../models/user";
-// import { connectToDB } from "../libs/mongodb";
-
 import prisma from "../libs/prismadb";
 import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
@@ -49,35 +46,10 @@ export const authOptions: AuthOptions = {
           throw new Error("Incorrect password");
         }
         return user;
-      }, // async authorize(credentials) {
-      //   await connectToDB();
-
-      //   if (!credentials?.email || !credentials?.password) {
-      //     throw new Error("Email or password not provided");
-      //   }
-
-      //   const user = await User.findOne({
-      //     email: credentials.email,
-      //   });
-
-      //   if (!user || credentials.password) {
-      //     throw new Error("User or password not found");
-      //   }
-
-      //   const isCorrectPassword = await bcrypt.compare(
-      //     credentials.password,
-      //     user.password
-      //   );
-
-      //   if (!isCorrectPassword) {
-      //     throw new Error("Incorrect password");
-      //   }
-
-      //   return user;
-      // },
+      },
     }),
   ],
-  
+
   pages: { signIn: "/" },
   debug: process.env.NODE_ENV === "development",
   session: {

@@ -6,7 +6,6 @@ import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
 import { User } from "@prisma/client";
-// import User from "@/app/models/user";
 
 interface NavbarProps {
   currentUser?: User | null;

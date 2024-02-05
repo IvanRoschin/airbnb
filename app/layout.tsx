@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+
 import getCurrentUser from "./actions/getCurrentUser";
 
 import RegisterModal from "./components/modals/RegisterModal";

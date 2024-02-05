@@ -3,14 +3,13 @@ import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { toast } from "react-hot-toast";
 
-// import { SafeUser } from "@/app/types";
 import { User } from "@prisma/client";
 
 import useLoginModal from "./useLoginModal";
 
 interface IUseFavorite {
   listingId: string;
-  currentUser?: User | null
+  currentUser?: User | null;
 }
 
 const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
@@ -24,42 +23,38 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
     return list.includes(listingId);
   }, [currentUser, listingId]);
 
-  const toggleFavorite = useCallback(async (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
+  const toggleFavorite = useCallback(
+    async (e: React.MouseEvent<HTMLDivElement>) => {
+      e.stopPropagation();
 
-    if (!currentUser) {
-      return loginModal.onOpen();
-    }
-
-    try {
-      let request;
-
-      if (hasFavorited) {
-        request = () => axios.delete(`/api/favorites/${listingId}`);
-        toast.success('Deleted from Favorites');
-      } else {
-        request = () => axios.post(`/api/favorites/${listingId}`);
-        toast.success('Added to Favorites');
+      if (!currentUser) {
+        return loginModal.onOpen();
       }
 
-      await request();
-      router.refresh();
-    } catch (error) {
-      toast.error('Something went wrong.');
-    }
-  }, 
-  [
-    currentUser, 
-    hasFavorited, 
-    listingId, 
-    loginModal,
-    router
-  ]);
+      try {
+        let request;
+
+        if (hasFavorited) {
+          request = () => axios.delete(`/api/favorites/${listingId}`);
+          toast.success("Deleted from Favorites");
+        } else {
+          request = () => axios.post(`/api/favorites/${listingId}`);
+          toast.success("Added to Favorites");
+        }
+
+        await request();
+        router.refresh();
+      } catch (error) {
+        toast.error("Something went wrong.");
+      }
+    },
+    [currentUser, hasFavorited, listingId, loginModal, router]
+  );
 
   return {
     hasFavorited,
     toggleFavorite,
-  }
-}
+  };
+};
 
 export default useFavorite;
