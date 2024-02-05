@@ -46,21 +46,21 @@ const Modal: React.FC<ModalProps> = ({
     }, 300);
   }, [disabled, onClose]);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (!ref.current?.contains(event.target as Node)) {
-        handleClose();
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (!ref.current?.contains(event.target as Node)) {
+  //       handleClose();
+  //     }
+  //   };
 
-    if (showModal) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+  //   if (showModal) {
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //   }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showModal, handleClose]);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [showModal, handleClose]);
 
   const handleSubmit = useCallback(() => {
     if (disabled) {
@@ -109,7 +109,7 @@ const Modal: React.FC<ModalProps> = ({
           h-full 
           lg:h-auto 
           md:h-auto
-          max-h-[100vh]"
+        "
         >
           {/* Content*/}
           <div
